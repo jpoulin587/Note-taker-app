@@ -24,6 +24,40 @@ app.get('/api/notes', (req, res) => {
     //console.log(notesData);
     });
 
+    //TODO get the post from the form
+//=========Adapted from unit 11, activity 18
+    // POST request to add a review
+app.post('/api/notes', (req, res) => {
+  // Log that a POST request was received
+  console.info(`${req.method} request received to add a NOTE :)`);
+
+  // Destructuring assignment for the items in req.body
+  const { noteTitle, noteText } = req.body;
+
+  // If all the required properties are present
+  if (noteTitle && noteText) {
+    // Variable for the object we will save
+    const newNote = {
+      noteTitle,
+      noteText,
+    };
+
+    const response = {
+      status: 'success',
+      body: newNote,
+    };
+
+    console.log(response);
+    res.json(response);
+  } else {
+    res.json('Error in posting review');
+  }
+});
+//=========================================
+// end of put function.......
+
+
+
 // Route for Index
 app.get('*', (req,res) => 
     res.sendFile(path.join(__dirname, './public/index.html'))
