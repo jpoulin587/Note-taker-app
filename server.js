@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require('path');
+const notesData = require('./db/db.json');
 
 const PORT = process.env.port || 3001;
 
@@ -16,6 +17,12 @@ app.use(express.static('public'));
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
+
+//Get the notes data
+app.get('/api/notes', (req, res) => {
+    res.json(notesData);
+    //console.log(notesData);
+    });
 
 // Route for Index
 app.get('*', (req,res) => 
