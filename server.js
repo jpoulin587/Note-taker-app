@@ -1,7 +1,9 @@
 const express = require("express");
+const router = express.Router()
 const fs = require("fs");
 const path = require('path');
 const notesData = require('./db/db.json');
+const { v4: uuidv4 } = require('uuid');
 
 const PORT = process.env.port || 3001;
 
@@ -25,34 +27,21 @@ app.get('/api/notes', (req, res) => {
     });
 
     //TODO get the post from the form
-//=========Adapted from unit 11, activity 18
-    // POST request to add a review
-app.post('/api/notes', (req, res) => {
-  // Log that a POST request was received
-  console.info(`${req.method} request received to add a NOTE :)`);
-
-  // Destructuring assignment for the items in req.body
-  const { noteTitle, noteText } = req.body;
-
-  // If all the required properties are present
-  if (noteTitle && noteText) {
-    // Variable for the object we will save
-    const newNote = {
-      noteTitle,
-      noteText,
-    };
-
-    const response = {
-      status: 'success',
-      body: newNote,
-    };
-
-    console.log(response);
-    res.json(response);
-  } else {
-    res.json('Error in posting review');
-  }
+//=========================================
+// adapted from unit 11 activity 20
+router.post('/api/notes', (req, res) => {
+  const newNote = req.body;
+  newNote.id = uuidv4();
+  notesData.push(newNote)
+  fs.writeFile(__dirname + '/../db/db.json', JSON.stringify(notesData), function (err) {
+    if (err) throw err
+  })
+  res.end()
+  console.log("saved");
 });
+
+
+
 //=========================================
 // end of put function.......
 
