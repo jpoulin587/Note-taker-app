@@ -28,19 +28,17 @@ app.get('/api/notes', (req, res) => {
 
     //TODO get the post from the form
 //=========================================
-// adapted from unit 11 activity 20
-router.post('/api/notes', (req, res) => {
-  const newNote = req.body;
-  newNote.id = uuidv4();
-  notesData.push(newNote)
-  fs.writeFile(__dirname + '/../db/db.json', JSON.stringify(notesData), function (err) {
-    if (err) throw err
-  })
-  res.end()
-  console.log("saved");
+app.post("/api/notes", function (req, res) {
+  
+  notesData.push(req.body);
+  notesData.forEach((obj, i) => {
+    obj.id = i + 1;
+  });
+  
+  fs.writeFile("./db/db.json", JSON.stringify(notesData), function () {
+    res.json(notesData);
+  });
 });
-
-
 
 //=========================================
 // end of put function.......
