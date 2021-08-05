@@ -3,7 +3,6 @@ const router = express.Router()
 const fs = require("fs");
 const path = require('path');
 const notesData = require('./db/db.json');
-const { v4: uuidv4 } = require('uuid');
 
 const PORT = process.env.port || 3001;
 
@@ -26,7 +25,7 @@ app.get('/api/notes', (req, res) => {
     //console.log(notesData);
     });
 
-    //TODO get the post from the form
+// get the post from the form
 //=========================================
 app.post("/api/notes", function (req, res) {
   
