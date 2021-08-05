@@ -27,22 +27,32 @@ app.get('/api/notes', (req, res) => {
 
 // get the post from the form
 //=========================================
-app.post("/api/notes", function (req, res) {
+app.post("/api/notes", (req, res) => {
   
   notesData.push(req.body);
   notesData.forEach((obj, i) => {
     obj.id = i + 1;
   });
   
-  fs.writeFile("./db/db.json", JSON.stringify(notesData), function () {
+  fs.writeFile("./db/db.json", JSON.stringify(notesData), () => {
     res.json(notesData);
   });
 });
-
 //=========================================
 // end of put function.......
 
-
+// delete function
+app.delete("/api/notes/:id",  (req, res) => {
+  var id = req.params.id;
+  notesData.splice(id - 1, 1);
+  notesData.forEach((obj, i) => {
+    obj.id = i + 1;
+  });
+  fs.writeFile("./db/db.json", JSON.stringify(notesData), () => {
+    res.json(notesData);
+  });
+});
+//==========================================
 
 // Route for Index
 app.get('*', (req,res) => 
