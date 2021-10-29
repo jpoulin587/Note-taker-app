@@ -16,7 +16,7 @@ This app uses Express to allow the user to make notes and save them for later re
 
 
 ## Instillation
-You can activate this app by Run NPM install to run it locally.  
+You can activate this app by running "NPM install" to run it locally.  Or click the deployed link below.
 
 ## Usage
 You can make use of this app by following these directions:  Locally it can be run by using "NPM start" and then going to "localhost:3001".  It can be used online at: https://whispering-shore-28736.herokuapp.com/ 
