@@ -3,6 +3,8 @@
 ## Description
 This app allow the used to make notes and save them for later retrieval.  Notes can be deleted when they are no longer needed. 
 
+![note take app.](./Screenshot.png)
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
