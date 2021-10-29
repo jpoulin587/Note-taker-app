@@ -1,7 +1,7 @@
 # Note Taker App
 
 ## Description
-This app allow the used to make notes and save them for later retrieval.  Notes can be deleted when they are no longer needed. 
+This app allow the user to make notes and save them for later retrieval.  Notes can be deleted when they are no longer needed. 
 
 ![note take app.](./Screenshot.png)
 
